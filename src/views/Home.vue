@@ -6,7 +6,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content>
-            <v-form :initial-values="formValues" v-slot="{ errors, values }">
+            <v-form :initial-values="initialValues" v-slot="{ errors, values }">
                 <ion-item>
                     <ion-label position="stacked">Name</ion-label>
                     <v-field
@@ -84,7 +84,7 @@ import {
     Field,
     defineRule,
 } from "vee-validate";
-import { required, min } from "@vee-validate/rules";
+import { required, min, email } from "@vee-validate/rules";
 
 export default defineComponent({
     name: "Home",
@@ -102,7 +102,7 @@ export default defineComponent({
     },
     data() {
         return {
-            formValues: {
+            initialValues: {
                 name: "",
                 email: "test@test.com",
             },
@@ -115,6 +115,7 @@ export default defineComponent({
 
         defineRule("required", required);
         defineRule("min", min);
+        defineRule("email", email);
     },
 });
 </script>
